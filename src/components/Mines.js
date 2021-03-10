@@ -189,8 +189,8 @@ function Mines() {
                               ${arr[i][j].revealed && !arr[i][j].isMine ? "revealed" : ""}`}
                               id={`${arr[i][j].isMine ? "mine" : ""}`}
                            >
-                              {y.revealed && y.numberOfMinesAroundIt !== 0 ? y.numberOfMinesAroundIt : " "}
-                              {y.revealed && y.numberOfMinesAroundIt !== 0 && !y.isMine ? (
+                              {y.revealed && y.numberOfMinesAroundIt !== 0 && y.randomNum !== 0 ? y.numberOfMinesAroundIt : " "}
+                              {y.revealed && y.numberOfMinesAroundIt !== 0 && !y.isMine && y.randomNum !== 0 ? (
                                  <span onClick={() => cascadeHandler(y.x, y.y)} id="cascade">
                                     cascade
                                  </span>

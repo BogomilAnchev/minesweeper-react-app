@@ -49,7 +49,9 @@ code {
 }
 
 #mine {
-   background-color: red;
+   background: url('./bomb.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
    color: red;
 }
 
