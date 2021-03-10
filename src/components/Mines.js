@@ -17,7 +17,7 @@ function Mines() {
    }
 
    function newGame(maxRandomInt, difficulty) {
-      let mines = 0
+      let mines = 0;
       let field = [];
       for (let i = 0; i < 9; i++) {
          let row = [];
@@ -37,7 +37,7 @@ function Mines() {
 
       for (let i = 0; i < field.length; i++) {
          for (let j = 0; j < field[i].length; j++) {
-            if (field[i][j].randomNum === 0) mines++
+            if (field[i][j].randomNum === 0) mines++;
             let counter = 0;
             for (let q = Math.max(0, i - 1); q <= Math.min(field.length - 1, Number(i) + 1); q++) {
                for (let w = Math.max(0, j - 1); w <= Math.min(field[0].length - 1, Number(j) + 1); w++) {
@@ -48,7 +48,7 @@ function Mines() {
          }
       }
 
-      setMineCount(mines)
+      setMineCount(mines);
       setDifficulty(difficulty);
       setArr(field);
       setLose(false);
@@ -77,7 +77,14 @@ function Mines() {
       e.preventDefault();
       if (win || lose) return;
       let newArr = arr.slice(0);
-      newArr[x][y].targeted ? (newArr[x][y].targeted = false) : (newArr[x][y].targeted = true);
+      if (newArr[x][y].targeted) {
+         setMineCount(mineCount + 1);
+         newArr[x][y].targeted = false;
+      } else {
+         setMineCount(mineCount - 1);
+         newArr[x][y].targeted = true;
+      }
+
       setArr(newArr);
    }
 
@@ -128,8 +135,8 @@ function Mines() {
 
    function checkIfWin() {
       let isWon = true;
-      arr.forEach(x => {
-         x.forEach(y => {
+      arr.forEach((x) => {
+         x.forEach((y) => {
             if (y.randomNum !== 0 && y.revealed === false) {
                isWon = false;
             }
@@ -160,7 +167,13 @@ function Mines() {
          <h1>MINESWEEPER! ...just a bit uglier...</h1>
 
          <h2 className={`${lose ? "game-over" : ""}${win ? "game-win" : ""}`}>{heading}</h2>
-         {difficulty ? <h1>{difficulty} - {mineCount}</h1> : ""}
+         {difficulty ? (
+            <h1>
+               {difficulty} {!win ? `- ${mineCount} mines on the field left` : ""}{" "}
+            </h1>
+         ) : (
+            ""
+         )}
 
          <div className={`${!lose ? "" : "game-over-field"}${!win ? "" : "game-win-field"}`}>
             {arr.map((x, i) => {
@@ -210,7 +223,7 @@ function Mines() {
             </button>
          </div>
 
-         {difficulty && !win && !lose ? <button onClick={!win ? revealMines : () => {}}>Show all the mines</button> : ""}
+         {difficulty && !win ? <button onClick={!win ? revealMines : () => {}}>Show all the mines</button> : ""}
 
          <section className="rules">
             <ul>
