@@ -107,12 +107,12 @@ function Mines() {
    */
 
    function checkSurrounds(newArr, x, y) {
-      if (newArr[x][y].numberOfMinesAroundIt !== 0) return
+      if (newArr[x][y].numberOfMinesAroundIt !== 0) return;
       for (let i = Math.max(0, x - 1); i <= Math.min(arr.length - 1, x + 1); i++) {
          for (let j = Math.max(0, y - 1); j <= Math.min(arr[0].length - 1, y + 1); j++) {
             if (!newArr[i][j].revealed) {
                newArr[i][j].revealed = true;
-               checkSurrounds(newArr, i, j)
+               checkSurrounds(newArr, i, j);
             }
          }
       }
@@ -124,13 +124,13 @@ function Mines() {
 
    function checkIfWin() {
       let isWon = true;
-      for (let i = 0; i < arr.length; i++) {
-         for (let j = 0; j < arr[i].length; j++) {
-            if (arr[i][j].randomNum !== 0 && arr[i][j].revealed === false) {
+      arr.forEach((x, i) => {
+         x.forEach((y, j) => {
+            if (y.randomNum !== 0 && y.revealed === false) {
                isWon = false;
             }
-         }
-      }
+         });
+      });
       if (isWon) {
          setWin(true);
          setHeading(":D CONGRATS! THERE`S NO BLOWIN YA! :D");
@@ -168,7 +168,7 @@ function Mines() {
                               key={`${i}${j}`}
                               onContextMenu={(e) => targetMine(e, y.x, y.y)}
                               onClick={!arr[i][j].revealed && !lose && !win ? () => clickBox(y.x, y.y) : () => {}}
-                              className={`box ${arr[i][j].targeted ? "target-mine" : ""}  
+                              className={`box ${arr[i][j].targeted ? "target-mine" : ""}    
                               ${arr[i][j].revealed && !arr[i][j].isMine ? "revealed" : ""}`}
                               id={`${arr[i][j].isMine ? "mine" : ""}`}
                            >
