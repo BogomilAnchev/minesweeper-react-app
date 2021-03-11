@@ -75,7 +75,7 @@ function Mines() {
 
    function targetMine(e, x, y) {
       e.preventDefault();
-      if (win || lose) return;
+      if (win || lose || arr[x][y].revealed) return;
       let newArr = arr.slice(0);
       if (newArr[x][y].targeted) {
          setMineCount(mineCount + 1);
@@ -113,7 +113,7 @@ function Mines() {
    }
 
    /* 
-      That damn recursion took me a while to figure it but damn, for a novice im good :D
+      That damn recursion took me a while to figure out...
       Proud of myself!
    */
 
@@ -130,6 +130,7 @@ function Mines() {
    }
 
    /* 
+      Yep :) :) :)
       Still proud!
    */
 
@@ -169,7 +170,7 @@ function Mines() {
          <h2 className={`${lose ? "game-over" : ""}${win ? "game-win" : ""}`}>{heading}</h2>
          {difficulty ? (
             <h1>
-               {difficulty} {!win ? `- ${mineCount} mines on the field left` : ""}{" "}
+               {difficulty} {!win ? `- ${mineCount} mines left on the field` : ""}{" "}
             </h1>
          ) : (
             ""
