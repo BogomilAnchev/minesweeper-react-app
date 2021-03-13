@@ -13,7 +13,7 @@ code {
 }
 
 .wrapper {
-   width: 1200px;
+   
    margin: 0 auto;
    text-align: center;
    background-color: ivory;
@@ -21,14 +21,16 @@ code {
 
 #root {
    background-color: ivory;
+   display: flex;
+   justify-content: center;
 }
 
 .game-over-field {
-   border: 2px solid red
+   border: 2px solid red;
 }
 
 .game-win-field {
-   border: 2px solid green
+   border: 2px solid green;
 }
 
 .row {
@@ -40,16 +42,19 @@ code {
    border: 1px solid rgb(173, 173, 173);
    color: rgb(165, 165, 165);
    cursor: pointer;
-   width: 60px;
-   height: 60px;
+   width: 50px;
+   height: 50px;
    font-weight: bold;
    font-size: 26px;
    margin: 0;
    position: relative;
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: center;
 }
 
 #mine {
-   background: url('./bomb.jpg');
+   background: url("./bomb.jpg");
    background-repeat: no-repeat;
    background-size: cover;
    color: red;
@@ -68,12 +73,10 @@ code {
 #cascade {
    font-size: 10px;
    padding: 0 5px;
-   position: absolute;
-   bottom: 2px;
-   right: 5px;
    border: 1px solid rgb(170, 170, 170);
    color: rgb(180, 180, 180);
    border-radius: 5px;
+   flex-basis: 100%;
 }
 
 #cascade:hover {
@@ -111,4 +114,26 @@ section {
    top: 200px;
    left: -20px;
    font-weight: bold;
+}
+
+ul {
+   list-style: none;
+}
+
+ul li {
+   margin-top: 20px;
+}
+
+@media all and (max-width: 1399px) {
+   section {
+      width: auto;
+      top: auto;
+      left: auto;
+      position: relative;
+      margin: 0 auto;
+   }
+   ul {
+      display: flex;
+      justify-content: center;
+   }
 }
