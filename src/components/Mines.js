@@ -229,9 +229,9 @@ function Mines() {
          <section className="rules">
             <ul>
                <li>LEFT CLICK - to clear a square that you think is not a mine.</li>
-               <li>RIGHT CLICK - to mark and unmark a square with orange to indicate you think a mine is there.</li>
+               <li>RIGHT CLICK (desktop only) - to mark and unmark a square with orange to indicate you think a mine is there.</li>
                <li>
-                  CASCADE (immitates clicking both mouse buttons at the same time in the actual game) - when the computer automatically opens up
+                  CASCADE (desktop only) - (immitates clicking both mouse buttons at the same time in the actual game) - when the computer automatically opens up
                   surrounding squares for you. Carefull for if you didn't mark the mines right, you lose.
                </li>
             </ul>

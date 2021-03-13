@@ -12,14 +12,14 @@ code {
    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.wrapper {
-   
+.wrapper {  
    margin: 0 auto;
    text-align: center;
    background-color: ivory;
 }
 
 #root {
+   min-width: 1299px;
    background-color: ivory;
    display: flex;
    justify-content: center;
@@ -131,9 +131,14 @@ ul li {
       left: auto;
       position: relative;
       margin: 0 auto;
+      width: 80%;
    }
    ul {
       display: flex;
       justify-content: center;
+   }
+
+   #cascade {
+      display: none;
    }
 }
